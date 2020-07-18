@@ -1,0 +1,15 @@
+<div class="mt-4">
+
+    <h5>Note List</h5>
+    <hr>
+    
+    <div *ngIf="textNotes.length ==0" style="text-align: center;">
+        Add some notes to see them here!
+    </div>
+
+    <div *ngIf="textNotes.length > 0">
+        <span class="card" *ngFor="let note of textNotes; let i=index">
+            <span class="card-body">{{ note }} <button class="btn btn-danger btn-sm" (click)="deleteNote(i)">Delete</button></span>
+        </span>
+    </div>
+</div>
