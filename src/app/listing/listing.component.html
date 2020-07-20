@@ -13,6 +13,7 @@
                 <th>Gender</th>
                 <th>Annual Salary</th>
                 <th>Date of Birth</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +26,7 @@
                     <td>{{ data.gender }}</td>
                     <td>{{ data.salary | currency }}</td>
                     <td>{{ data.date }}</td>
+                    <td><button class="btn btn-sm btn-info" routerLink="/lists/{{data.code}}">View</button></td>
 
                 </tr>
             </ng-container>

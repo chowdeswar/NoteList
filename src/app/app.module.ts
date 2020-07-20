@@ -11,6 +11,7 @@ import { ListingComponent } from './listing/listing.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NotesComponent } from './notes/notes.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ListDetailsComponent } from './list-details/list-details.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     FilterCountComponent,
     ListingComponent,
     NotesComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ListDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -4,12 +4,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListingComponent } from './listing/listing.component';
 import { NotesComponent } from './notes/notes.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ListDetailsComponent } from './list-details/list-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'notes', pathMatch: 'full' },
   { path: 'notes', component: NotesComponent },
-  { path: 'lists', component: ListingComponent },
-  { path: '**', component: NotFoundComponent}
+  {
+    path: 'lists', component: ListingComponent, children: [
+    ]
+  },
+  { path: 'lists/:code', component: ListDetailsComponent },
+  { path: '**', component: NotFoundComponent }
 ]
 
 @NgModule({

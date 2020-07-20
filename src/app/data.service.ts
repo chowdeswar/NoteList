@@ -17,4 +17,8 @@ export class DataService {
   getData() {
     return this.data;
   }
+
+  getCodeDetails(code) {
+    return this.data.filter(c => c.code == code)
+  }
 }
