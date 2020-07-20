@@ -38,7 +38,7 @@
 <div class="toolbar" role="banner">
   <img width="40" alt="Angular Logo"
     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
-  <span>Welcome</span>
+  <span>Welcome {{ title ? title : 'No header expected' }}</span>
 </div>
 
 <br>
@@ -46,9 +46,55 @@
 
   <h4>Type in a Note and Press Enter to Add it</h4>
 
-  <input type="text" class="form-control" [(ngModel)]="TextNote" (keyup.enter)="GetNoteText($event.target.value)" name="Note text" placeholder="Note text goes here">
+  <input type="text" class="form-control" [(ngModel)]="TextNote"
+    (keyup.enter)="GetNoteText($event.target.value)" name="Note text"
+    placeholder="Note text goes here">
 
 
   <app-note-list [textNotes]="TextNoteArray" (noteDeletion)="deleteNote($event)"></app-note-list>
+  <hr>
+  <hr>
+  <hr>
+</div>
+
+
+
+<div class="container">
+
+  <br>
+  <app-filter-count [allData]="getAll()" [maleData]="getMaleData()" [femaleData]="getFemaleData()"
+    (emitType)="emittedEvent($event)"></app-filter-count>
+  <br>
+
+  <table class="table table-bordered table-sm table-hover">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Annual Salary</th>
+        <th>Date of Birth</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let data of loopData; let i=index">
+
+
+        <tr *ngIf="selectedRadioButton=='all' || selectedRadioButton==data.gender">
+          <td>{{ data.code }}</td>
+          <td>{{ data.name | GenderConvertion:data.gender }}</td>
+          <td>{{ data.gender }}</td>
+          <td>{{ data.salary | currency }}</td>
+          <td>{{ data.date }}</td>
+
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+  <br>
+
+
 
 </div>
+
+<br><br><br><br><br><br><br><br><br><br><br>

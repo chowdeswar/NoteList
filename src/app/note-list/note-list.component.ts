@@ -12,7 +12,7 @@ export class NoteListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.textNotes);
+    // console.log(this.textNotes);
   }
 
   deleteNote(index) {
