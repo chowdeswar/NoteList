@@ -1,14 +1,13 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-import { Datas } from './data.interface';
-import { DataService } from './data.service';
-
+import { Component, OnInit } from '@angular/core';
+import { Datas } from './../data.interface';
+import { DataService } from './../data.service';
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  providers: [DataService]
+  selector: 'app-listing',
+  templateUrl: './listing.component.html',
+  styleUrls: ['./listing.component.scss']
 })
-export class AppComponent implements OnInit {
+export class ListingComponent implements OnInit {
+
   title = '@NoteList';
   example = "@App Changes";
   // LogoImageUrl = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==";
@@ -31,13 +30,26 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.loopData = this._dataService.getData();
+    this.loopData = this._dataService.getData();
   }
 
-  
+  getAll() {
+    // console.log(this.loopData.length)
+    return this.loopData.length;
+  }
 
+  getMaleData() {
+    return this.loopData.filter(m => m.gender === 'Male').length;
+  }
 
+  getFemaleData() {
+    return this.loopData.filter(m => m.gender === 'Female').length;
+  }
 
+  emittedEvent(event) {
+    this.selectedRadioButton = event;
+    // console.log(typeof event, ' and type is::: ', event);
+  }
 
   GetNoteText(textNote) {
     this.TextNote = "";
@@ -50,5 +62,6 @@ export class AppComponent implements OnInit {
   deleteNote(indexing) {
     this.TextNoteArray.splice(indexing, 1);
   }
+
 
 }

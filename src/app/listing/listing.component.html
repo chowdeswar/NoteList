@@ -1,0 +1,37 @@
+<div class="">
+
+    <br>
+    <app-filter-count [allData]="getAll()" [maleData]="getMaleData()" [femaleData]="getFemaleData()"
+        (emitType)="emittedEvent($event)"></app-filter-count>
+    <br>
+
+    <table class="table table-bordered table-sm table-hover">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Annual Salary</th>
+                <th>Date of Birth</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let data of loopData; let i=index">
+
+
+                <tr *ngIf="selectedRadioButton=='all' || selectedRadioButton==data.gender">
+                    <td>{{ data.code }}</td>
+                    <td>{{ data.name | GenderConvertion:data.gender }}</td>
+                    <td>{{ data.gender }}</td>
+                    <td>{{ data.salary | currency }}</td>
+                    <td>{{ data.date }}</td>
+
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+    <br>
+
+
+
+</div>

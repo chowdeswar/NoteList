@@ -6,17 +6,25 @@ import { AppComponent } from './app.component';
 import { NoteListComponent } from './note-list/note-list.component';
 import { GenderPipe } from './gender.pipe';
 import { FilterCountComponent } from './filter-count/filter-count.component';
+import { ListingComponent } from './listing/listing.component';
+
+import { AppRoutingModule } from './app-routing.module';
+import { NotesComponent } from './notes/notes.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NoteListComponent,
     GenderPipe,
-    FilterCountComponent
+    FilterCountComponent,
+    ListingComponent,
+    NotesComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
-     FormsModule
+     FormsModule,AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

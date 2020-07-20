@@ -42,59 +42,16 @@
 </div>
 
 <br>
-<div class="container">
-
-  <h4>Type in a Note and Press Enter to Add it</h4>
-
-  <input type="text" class="form-control" [(ngModel)]="TextNote"
-    (keyup.enter)="GetNoteText($event.target.value)" name="Note text"
-    placeholder="Note text goes here">
-
-
-  <app-note-list [textNotes]="TextNoteArray" (noteDeletion)="deleteNote($event)"></app-note-list>
-  <hr>
-  <hr>
-  <hr>
-</div>
-
 
 
 <div class="container">
-
+  <button class="btn btn-sm btn-primary" routerLink="notes"> + Notes</button> &nbsp;
+  <button class="btn btn-sm btn-primary" routerLink="lists"> + Lists</button>
   <br>
-  <app-filter-count [allData]="getAll()" [maleData]="getMaleData()" [femaleData]="getFemaleData()"
-    (emitType)="emittedEvent($event)"></app-filter-count>
-  <br>
+</div>
+<br>
 
-  <table class="table table-bordered table-sm table-hover">
-    <thead>
-      <tr>
-        <th>Code</th>
-        <th>Name</th>
-        <th>Gender</th>
-        <th>Annual Salary</th>
-        <th>Date of Birth</th>
-      </tr>
-    </thead>
-    <tbody>
-      <ng-container *ngFor="let data of loopData; let i=index">
-
-
-        <tr *ngIf="selectedRadioButton=='all' || selectedRadioButton==data.gender">
-          <td>{{ data.code }}</td>
-          <td>{{ data.name | GenderConvertion:data.gender }}</td>
-          <td>{{ data.gender }}</td>
-          <td>{{ data.salary | currency }}</td>
-          <td>{{ data.date }}</td>
-
-        </tr>
-      </ng-container>
-    </tbody>
-  </table>
-  <br>
-
-
+<div class="container">
+  <router-outlet></router-outlet>
 
 </div>
-
-<br><br><br><br><br><br><br><br><br><br><br>
